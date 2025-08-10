@@ -280,16 +280,17 @@ if (burger && mobileMenu) {
 }
 // --- Quote Modal ---
 // Modal markup appears after the script tag, so initialize once the DOM is ready.
-document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('quote-modal');
-  if (!modal) return;
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('quote-modal');
+    if (!modal) return;
 
-  const overlay = modal.querySelector('.th-modal__overlay');
-  const closeBtns = modal.querySelectorAll('[data-close]');
-  const dialog = modal.querySelector('.th-modal__dialog');
-  const form = modal.querySelector('#quote-form');
-  const firstInput = form?.querySelector('input, textarea, select');
-  let lastFocused = null;
+    const overlay = modal.querySelector('.th-modal__overlay');
+    const closeBtns = modal.querySelectorAll('[data-close]');
+    const dialog = modal.querySelector('.th-modal__dialog');
+    const form = modal.querySelector('#quote-form');
+    const firstInput = form?.querySelector('input, textarea, select');
+    const thanks = modal.querySelector('.th-modal__thanks');
+    let lastFocused = null;
 
   // Avaa modaali kaikille elementeille, joilla on data-open="quote-modal".
   // Delegoitu kuuntelija varmistaa toiminnan myös dynaamisesti lisätyille napeille.
@@ -300,27 +301,31 @@ document.addEventListener('DOMContentLoaded', () => {
     openModal(opener);
   });
 
-  function openModal(triggerEl) {
-    lastFocused = triggerEl || document.activeElement;
-    if (burger && mobileMenu && !mobileMenu.hasAttribute('hidden')) {
-      mobileMenu.setAttribute('hidden', '');
-      burger.setAttribute('aria-expanded', 'false');
-      burger.classList.remove('open');
+    function openModal(triggerEl) {
+      lastFocused = triggerEl || document.activeElement;
+      if (burger && mobileMenu && !mobileMenu.hasAttribute('hidden')) {
+        mobileMenu.setAttribute('hidden', '');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.classList.remove('open');
+      }
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('no-scroll');
+      if (burger) burger.setAttribute('hidden', '');
+      setTimeout(() => firstInput && firstInput.focus(), 90);
+      document.addEventListener('keydown', onKeyDown);
     }
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('no-scroll');
-    setTimeout(() => firstInput && firstInput.focus(), 90);
-    document.addEventListener('keydown', onKeyDown);
-  }
 
-  function closeModal() {
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('no-scroll');
-    document.removeEventListener('keydown', onKeyDown);
-    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-  }
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('no-scroll');
+      if (burger) burger.removeAttribute('hidden');
+      document.removeEventListener('keydown', onKeyDown);
+      form?.removeAttribute('hidden');
+      thanks?.setAttribute('hidden', '');
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }
 
   function onKeyDown(e) {
     if (e.key === 'Escape') {
@@ -345,9 +350,9 @@ document.addEventListener('DOMContentLoaded', () => {
   closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
 
   // Kevyt client-side validointi + feikki onnistumis-UI
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let valid = true;
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let valid = true;
 
     const email = form.querySelector('#q-email');
     const name = form.querySelector('#q-name');
@@ -371,18 +376,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!emailOk) setError(email, 'Syötä validi sähköposti'); else clearError(email);
     if (!consent.checked) { valid = false; consent.focus(); }
 
-    if (!valid) return;
+      if (!valid) return;
 
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Lähetetään…';
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Lähetetään…';
 
-    setTimeout(() => {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Lähetä pyyntö';
-      form.reset();
-      closeModal();
-      // Halutessasi: näytä toast tai pieni vahvistusbadge CTA:n lähellä
-    }, 700);
-  });
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Lähetä pyyntö';
+        form.reset();
+        form.setAttribute('hidden', '');
+        thanks?.removeAttribute('hidden');
+        setTimeout(() => {
+          closeModal();
+        }, 2000);
+        // Halutessasi: näytä toast tai pieni vahvistusbadge CTA:n lähellä
+      }, 700);
+    });
 });
