@@ -9,7 +9,6 @@ window.addEventListener('scroll', () => {
 });
 
 // Korttien reveal + rivikohtainen stagger
-// Korttien reveal + rivikohtainen stagger
 const cardsWrap = document.querySelector('.services .cards');
 
 if (cardsWrap) {
