@@ -280,7 +280,8 @@ if (burger && mobileMenu) {
   });
 }
 // --- Quote Modal ---
-(() => {
+// Modal markup appears after the script tag, so initialize once the DOM is ready.
+document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('quote-modal');
   if (!modal) return;
 
@@ -380,4 +381,4 @@ if (burger && mobileMenu) {
       // Halutessasi: näytä toast tai pieni vahvistusbadge CTA:n lähellä
     }, 700);
   });
-})();
+});
