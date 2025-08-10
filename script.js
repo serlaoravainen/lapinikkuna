@@ -98,7 +98,9 @@ if (baWrapper && baAfter && baHandle && knob) {
     baHandle.style.left = pct + '%';
     baGlow.style.setProperty('--x', pct + '%');
     knob.setAttribute('data-pct', Math.round(pct));
-    baHandle.setAttribute('aria-valuenow', Math.round(pct));
+    const value = Math.round(pct);
+    baHandle.setAttribute('aria-valuenow', value);
+    baHandle.setAttribute('aria-valuetext', value + '%');
   };
 
   const moveHandle = (clientX) => {
@@ -119,9 +121,11 @@ if (baWrapper && baAfter && baHandle && knob) {
   // Keyboard
   baHandle.addEventListener('keydown', (e) => {
     const current = parseFloat(baAfter.style.width) || 50;
-    if (e.key === 'ArrowLeft')  setPos(current - 2);
-    if (e.key === 'ArrowRight') setPos(current + 2);
-    if (e.key === 'Enter' || e.key === ' ') setPos(50);
+    if (e.key === 'ArrowLeft') { e.preventDefault(); setPos(current - 2); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); setPos(current + 2); }
+    if (e.key === 'Home') { e.preventDefault(); setPos(0); }
+    if (e.key === 'End') { e.preventDefault(); setPos(100); }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setPos(50); }
   });
 
   // Init
@@ -264,5 +268,14 @@ if (burger && mobileMenu) {
       burger.setAttribute('aria-expanded', 'false');
       burger.classList.remove('open');
     });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileMenu.hasAttribute('hidden')) {
+      mobileMenu.setAttribute('hidden', '');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.classList.remove('open');
+      burger.focus();
+    }
   });
 }
