@@ -291,11 +291,14 @@ if (burger && mobileMenu) {
   const firstInput = form?.querySelector('input, textarea, select');
   let lastFocused = null;
 
-  // Etsi kaikki "Pyydä" -CTA:t (hero + CTA-osio)
-  function findOpeners() {
-    const ctas = Array.from(document.querySelectorAll('a.cta, button.cta'));
-    return ctas.filter(el => (el.textContent || '').toLowerCase().includes('pyydä'));
-  }
+  // Avaa modaali kaikille elementeille, joilla on data-open="quote-modal".
+  // Delegoitu kuuntelija varmistaa toiminnan myös dynaamisesti lisätyille napeille.
+  document.addEventListener('click', (e) => {
+    const opener = e.target.closest('[data-open="quote-modal"]');
+    if (!opener) return;
+    e.preventDefault();
+    openModal(opener);
+  });
 
   function openModal(triggerEl) {
     lastFocused = triggerEl || document.activeElement;
@@ -331,14 +334,6 @@ if (burger && mobileMenu) {
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   }
-
-  // Kytke avaajat
-  findOpeners().forEach(opener => {
-    opener.addEventListener('click', (e) => {
-      e.preventDefault();
-      openModal(opener);
-    });
-  });
 
   // Sulje overlay/painikkeet
   overlay?.addEventListener('click', closeModal);
