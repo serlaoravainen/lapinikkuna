@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch index-fixed.html in Chrome",
+      "file": "${workspaceFolder}/${input:htmlFile}",
+      "webRoot": "${workspaceFolder}"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "pickString",
+      "id": "htmlFile",
+      "description": "Select the HTML file to launch",
+      "options": [
+        "index-fixed.html"
+      ]
+    }
+  ]
+}
