@@ -36,3 +36,31 @@
 
   --nav-gap: 2.22vw;
 }
+
+@media (max-width: 1024px) {
+  :root {
+    --font-size-hero: 48px;
+    --line-height-hero: 56px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-hero: 36px;
+    --line-height-hero: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-hero: 30px;
+    --line-height-hero: 38px;
+  }
+}
+
+@media (max-width: 320px) {
+  :root {
+    --font-size-hero: 26px;
+    --line-height-hero: 32px;
+  }
+}
