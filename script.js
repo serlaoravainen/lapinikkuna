@@ -303,6 +303,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openModal(triggerEl) {
     lastFocused = triggerEl || document.activeElement;
+    if (burger && mobileMenu && !mobileMenu.hasAttribute('hidden')) {
+      mobileMenu.setAttribute('hidden', '');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.classList.remove('open');
+    }
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('no-scroll');
