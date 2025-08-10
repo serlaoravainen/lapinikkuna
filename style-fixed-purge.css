@@ -1309,8 +1309,8 @@ a.cta-2.cta-big {
 
   /* Otsikko skaalautuu pienemmäksi mobiilissa */
   .hero .container h1 {
-    font-size: clamp(1.9rem, 6vw, 2.3rem);
-    line-height: 1.15;
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h1);
     padding-bottom: 12px;
   }
 
