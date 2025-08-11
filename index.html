@@ -332,21 +332,20 @@
 </div>
 </div>
 <!-- Hidden form for Netlify build bots to register fields -->
-<form data-netlify="true" hidden="" method="POST" name="quote" netlify="">
-<input name="form-name" type="hidden" value="quote"/>
-<input name="name" type="text"/>
-<input name="email" type="email"/>
-<input name="phone" type="tel"/>
-<select name="service">
-<option value="Koti">Koti – ikkunanpesu</option>
-<option value="Yritys">Yritys – toimitilat</option>
-<option value="Sisä-ulkopesu">Sisä- ja ulkopesu</option>
-<option value="Muu">Muu / en tiedä</option>
-</select>
-<textarea name="message"></textarea>
-<input name="consent" type="checkbox"/>
+<form data-netlify="true" hidden method="POST" name="quote">
+  <input type="hidden" name="form-name" value="quote" />
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="tel" name="phone" />
+  <select name="service">
+    <option value="Koti">Koti – ikkunanpesu</option>
+    <option value="Yritys">Yritys – toimitilat</option>
+    <option value="Sisä-ulkopesu">Sisä- ja ulkopesu</option>
+    <option value="Muu">Muu / en tiedä</option>
+  </select>
+  <textarea name="message"></textarea>
+  <input type="checkbox" name="consent" />
 </form>
-
 
 </body>
 </html>
