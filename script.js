@@ -383,6 +383,7 @@ if (burger && mobileMenu) {
       submitBtn.textContent = 'Lähetetään…';
 
       const formData = new FormData(form);
+      formData.append('form-name', 'quote'); // Tämä varmistaa että Netlify tunnistaa lomakkeen
 
       fetch('/', {
         method: 'POST',

@@ -1,262 +1,236 @@
 <!DOCTYPE html>
-<html lang="fi" class="no-js" data-grid="on">
+
+<html class="no-js" data-grid="on" lang="fi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Lapin Ikkuna tarjoaa luotettavaa ikkunanpesua koteihin ja yrityksille." />
-  <title>Lapin Ikkuna</title>
-
-  <!-- CSS order matters: variables -> base styles -> dev overlay (last) -->
-   <script src="https://unpkg.com/lucide@latest"></script>
-   <link rel="preload" as="image" href="kuvat/ikkunapesu.webp">
-  <link rel="stylesheet" href="var-fixed-purge.css" />
-  <link rel="stylesheet" href="style-fixed-purge.css" />
-
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Lapin Ikkuna tarjoaa luotettavaa ikkunanpesua koteihin ja yrityksille." name="description"/>
+<title>Lapin Ikkuna</title>
+<!-- CSS order matters: variables -> base styles -> dev overlay (last) -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<link as="image" href="kuvat/ikkunapesu.webp" rel="preload"/>
+<link href="var-fixed-purge.css" rel="stylesheet">
+<link href="style-fixed-purge.css" rel="stylesheet"/>
+</link></head>
 <body>
-  <script>document.documentElement.classList.remove('no-js');</script>
-
-<button class="th-burger" type="button" aria-label="Avaa valikko" aria-controls="th-mobile-menu" aria-expanded="false">
-  <span></span>
-  <span></span>
-  <span></span>
+<script>document.documentElement.classList.remove('no-js');</script>
+<button aria-controls="th-mobile-menu" aria-expanded="false" aria-label="Avaa valikko" class="th-burger" type="button">
+<span></span>
+<span></span>
+<span></span>
 </button>
 <header class="th-header">
-  <div class="th-header__inner">
-  <a class="th-brand" href="#">
-  <img src="kuvat/logo_lapinikkuna.webp" alt="Lapin Ikkuna" class="header-logo">
+<div class="th-header__inner">
+<a class="th-brand" href="#">
+<img alt="Lapin Ikkuna" class="header-logo" src="kuvat/logo_lapinikkuna.webp"/>
 </a>
-
-    <nav class="th-nav">
-      <ul class="th-nav__list">
-        <li><a class="th-nav__link" href="#palvelut">Palvelut</a></li>
-        <li><a class="th-nav__link" href="#meista">Miksi me?</a></li>
-        <li><a class="th-nav__link" href="#yhteys">Yhteystiedot</a></li>
-      </ul>
-    </nav>
- 
-
-  </div>
+<nav class="th-nav">
+<ul class="th-nav__list">
+<li><a class="th-nav__link" href="#palvelut">Palvelut</a></li>
+<li><a class="th-nav__link" href="#meista">Miksi me?</a></li>
+<li><a class="th-nav__link" href="#yhteys">Yhteystiedot</a></li>
+</ul>
+</nav>
+</div>
 </header>
-<nav id="th-mobile-menu" class="th-mobile-menu" hidden aria-label="Mobiilivalikko">
-  <ul>
-    <li><a href="#palvelut">Palvelut</a></li>
-    <li><a href="#meista">Miksi me?</a></li>
-    <li><a href="#yhteys">Yhteys</a></li>
-  </ul>
+<nav aria-label="Mobiilivalikko" class="th-mobile-menu" hidden="" id="th-mobile-menu">
+<ul>
+<li><a href="#palvelut">Palvelut</a></li>
+<li><a href="#meista">Miksi me?</a></li>
+<li><a href="#yhteys">Yhteys</a></li>
+</ul>
 </nav>
 <main>
 <section class="hero">
-  <div class="hero-bg"></div> <!-- elävä taustakerros -->
-  <div class="container">
-    <div class="hero-text">
-      <h1>Ikkunat kirkkaasti helposti <br> ja nopeasti</h1>
-      <p>Luotettavaa ikkunanpesua koteihin ja yrityksille</p>
-      <div class="buttons">
-        <a href="#yhteys" class="cta" data-open="quote-modal">Pyydä tarjous</a>
-        <a href="#palvelut" class="cta-2">Katso palvelut</a>
-      </div>
-    </div>
-    <div class="hero-image">
-      <img src="kuvat/ikkunapesu.webp" alt="Henkilö pesee ikkunaa">
-    </div>
-  </div>
-  <div class="hero-gloss"></div> <!-- kiiltoefekti -->
+<div class="hero-bg"></div> <!-- elävä taustakerros -->
+<div class="container">
+<div class="hero-text">
+<h1>Ikkunat kirkkaasti helposti <br/> ja nopeasti</h1>
+<p>Luotettavaa ikkunanpesua koteihin ja yrityksille</p>
+<div class="buttons">
+<a class="cta" data-open="quote-modal" href="#yhteys">Pyydä tarjous</a>
+<a class="cta-2" href="#palvelut">Katso palvelut</a>
+</div>
+</div>
+<div class="hero-image">
+<img alt="Henkilö pesee ikkunaa" src="kuvat/ikkunapesu.webp"/>
+</div>
+</div>
+<div class="hero-gloss"></div> <!-- kiiltoefekti -->
 </section>
-
-
 <section class="services container" id="palvelut">
-  <h2 class="section-title"><span>Mitä palveluihimme kuuluu</span></h2>
-  <div class="cards">
-    <div class="card">
-      <img src="kuvat/koti-icon.webp" alt="Kuvake talosta">
-      <h3 class="gradient-title">Kotiisi</h3>
-      <p>Puhdasta näkymää varten – tulemme sovittuna aikana ja jätämme ikkunasi säihkymään.</p>
-    </div>
-    <div class="card">
-      <img src="kuvat/yritys-icon.webp" alt="Kuvake toimistorakennuksesta">
-      <h3 class="gradient-title">Yrityksellesi</h3>
-      <p>Siistit ikkunat antavat hyvän ensivaikutelman – huolehdimme toimitilojesi kirkkaudesta.</p>
-    </div>
-    <div class="card">
-      <img src="kuvat/ulko-icon.webp" alt="Kuvake ikkunoiden sisä- ja ulkopesusta">
-      <h3 class="gradient-title">Sisä- ja ulkopesu</h3>
-      <p>Kattava pesu sisältä ja ulkoa – myös vaikeapääsyiset pinnat hoituvat.</p>
-    </div>
-  </div>
+<h2 class="section-title"><span>Mitä palveluihimme kuuluu</span></h2>
+<div class="cards">
+<div class="card">
+<img alt="Kuvake talosta" src="kuvat/koti-icon.webp"/>
+<h3 class="gradient-title">Kotiisi</h3>
+<p>Puhdasta näkymää varten – tulemme sovittuna aikana ja jätämme ikkunasi säihkymään.</p>
+</div>
+<div class="card">
+<img alt="Kuvake toimistorakennuksesta" src="kuvat/yritys-icon.webp"/>
+<h3 class="gradient-title">Yrityksellesi</h3>
+<p>Siistit ikkunat antavat hyvän ensivaikutelman – huolehdimme toimitilojesi kirkkaudesta.</p>
+</div>
+<div class="card">
+<img alt="Kuvake ikkunoiden sisä- ja ulkopesusta" src="kuvat/ulko-icon.webp"/>
+<h3 class="gradient-title">Sisä- ja ulkopesu</h3>
+<p>Kattava pesu sisältä ja ulkoa – myös vaikeapääsyiset pinnat hoituvat.</p>
+</div>
+</div>
 </section>
-
-<section id="referenssit" class="before-after">
-  <h2>Näe ero itse</h2>
-  <p>Vedä liukusäädintä ja näe, miten kirkkaaksi ikkunat voidaan saada.</p>
-
-  <div class="ba-wrapper">
-    <!-- Before image -->
-    <div class="ba-image ba-before">
-      <img src="kuvat/ikkunapesu.webp" alt="Ennen" loading="lazy" decoding="async">
-    </div>
-
-    <!-- After image -->
-    <div class="ba-image ba-after">
-      <img src="kuvat/ikkunapesu.webp" alt="Jälkeen" loading="lazy" decoding="async">
-    </div>
-
-    <!-- Glow effect -->
-    <div class="ba-glow" aria-hidden="true"></div>
-
-    <!-- Labels -->
-    <span class="ba-tag before">Ennen</span>
-    <span class="ba-tag after">Jälkeen</span>
-
-    <!-- Handle -->
-    <div class="ba-handle" role="slider" aria-label="Ero liukusäädin" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-      <div class="ba-line"></div>
-      <div class="ba-circle" data-pct="50"></div>
-    </div>
-  </div>
+<section class="before-after" id="referenssit">
+<h2>Näe ero itse</h2>
+<p>Vedä liukusäädintä ja näe, miten kirkkaaksi ikkunat voidaan saada.</p>
+<div class="ba-wrapper">
+<!-- Before image -->
+<div class="ba-image ba-before">
+<img alt="Ennen" decoding="async" loading="lazy" src="kuvat/ikkunapesu.webp"/>
+</div>
+<!-- After image -->
+<div class="ba-image ba-after">
+<img alt="Jälkeen" decoding="async" loading="lazy" src="kuvat/ikkunapesu.webp"/>
+</div>
+<!-- Glow effect -->
+<div aria-hidden="true" class="ba-glow"></div>
+<!-- Labels -->
+<span class="ba-tag before">Ennen</span>
+<span class="ba-tag after">Jälkeen</span>
+<!-- Handle -->
+<div aria-label="Ero liukusäädin" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="ba-handle" role="slider" tabindex="0">
+<div class="ba-line"></div>
+<div class="ba-circle" data-pct="50"></div>
+</div>
+</div>
 </section>
-
-
-
 <section class="why-us" id="meista">
-  <div class="why-bg-light"></div>
-  <div class="container">
-    <h2 class="gradient-title">Miksi asiakkaamme valitsevat meidät</h2>
-    <div class="why-grid">
-      
-      <div class="why-card">
-        <div class="custom-icon bright-icon">
-          <!-- Aurinko -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-        </div>
-        <h3>Kirkkaus joka kestää</h3>
-        <p>Ikkunamme pysyvät kirkkaina pidempään, kiitos huolellisen ja ammattimaisen työn.</p>
-      </div>
-
-      <div class="why-card">
-        <div class="custom-icon speed-icon">
-          <!-- Kello + sydän -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-            <path d="M20 21c-1.5-1.5-4-1.5-5.5 0s-4 1.5-5.5 0"/>
-          </svg>
-        </div>
-        <h3>Nopea ja ystävällinen palvelu</h3>
-        <p>Saavumme ajallaan ja hoidamme työn tehokkaasti, aina hymyillen.</p>
-      </div>
-
-      <div class="why-card">
-        <div class="custom-icon shield-icon">
-          <!-- Kilpi + check -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2l8 4v6c0 5-3.6 9.4-8 10-4.4-.6-8-5-8-10V6l8-4z"/>
-            <polyline points="9 12 11 14 15 10"/>
-          </svg>
-        </div>
-        <h3>Tyytyväisyystakuu</h3>
-        <p>Jos et ole täysin tyytyväinen lopputulokseen, tulemme korjaamaan sen veloituksetta.</p>
-      </div>
-
-    </div>
-  </div>
+<div class="why-bg-light"></div>
+<div class="container">
+<h2 class="gradient-title">Miksi asiakkaamme valitsevat meidät</h2>
+<div class="why-grid">
+<div class="why-card">
+<div class="custom-icon bright-icon">
+<!-- Aurinko -->
+<svg fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="12" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+</div>
+<h3>Kirkkaus joka kestää</h3>
+<p>Ikkunamme pysyvät kirkkaina pidempään, kiitos huolellisen ja ammattimaisen työn.</p>
+</div>
+<div class="why-card">
+<div class="custom-icon speed-icon">
+<!-- Kello + sydän -->
+<svg fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+<path d="M20 21c-1.5-1.5-4-1.5-5.5 0s-4 1.5-5.5 0"></path>
+</svg>
+</div>
+<h3>Nopea ja ystävällinen palvelu</h3>
+<p>Saavumme ajallaan ja hoidamme työn tehokkaasti, aina hymyillen.</p>
+</div>
+<div class="why-card">
+<div class="custom-icon shield-icon">
+<!-- Kilpi + check -->
+<svg fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2l8 4v6c0 5-3.6 9.4-8 10-4.4-.6-8-5-8-10V6l8-4z"></path>
+<polyline points="9 12 11 14 15 10"></polyline>
+</svg>
+</div>
+<h3>Tyytyväisyystakuu</h3>
+<p>Jos et ole täysin tyytyväinen lopputulokseen, tulemme korjaamaan sen veloituksetta.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="yhteys" class="cta-section">
-  <div class="cta-bg"></div>
-
-  <div class="container cta-wrap">
-    <h2 class="cta-title gradient-title">Valmiina kirkkaisiin ikkunoihin?</h2>
-    <p class="cta-sub">Pyydä ilmainen arvio tänään – vastaamme yleensä saman päivän aikana.</p>
-
-    <ul class="cta-points">
-      <li>
-        <span class="icon-circle" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M4 8l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
+<section class="cta-section" id="yhteys">
+<div class="cta-bg"></div>
+<div class="container cta-wrap">
+<h2 class="cta-title gradient-title">Valmiina kirkkaisiin ikkunoihin?</h2>
+<p class="cta-sub">Pyydä ilmainen arvio tänään – vastaamme yleensä saman päivän aikana.</p>
+<ul class="cta-points">
+<li>
+<span aria-hidden="true" class="icon-circle">
+<svg fill="none" height="16" viewbox="0 0 16 16" width="16">
+<path d="M4 8l3 3 5-5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</span>
         Tyytyväisyystakuu
       </li>
-      <li>
-        <span class="icon-circle" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M4 8l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
+<li>
+<span aria-hidden="true" class="icon-circle">
+<svg fill="none" height="16" viewbox="0 0 16 16" width="16">
+<path d="M4 8l3 3 5-5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</span>
         Ei piilokuluja
       </li>
-      <li>
-        <span class="icon-circle" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M4 8l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
+<li>
+<span aria-hidden="true" class="icon-circle">
+<svg fill="none" height="16" viewbox="0 0 16 16" width="16">
+<path d="M4 8l3 3 5-5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</span>
         Nopea ja ystävällinen palvelu
       </li>
-    </ul>
-
-    <div class="cta-actions">
-      <a href="#yhteys" class="cta cta-big" data-open="quote-modal">Pyydä tarjous</a>
-      <a href="#palvelut" class="cta-2 cta-big">Katso palvelut</a>
+</ul>
+<div class="cta-actions">
+<a class="cta cta-big" data-open="quote-modal" href="#yhteys">Pyydä tarjous</a>
+<a class="cta-2 cta-big" href="#palvelut">Katso palvelut</a>
+</div>
+<div class="cta-footnote">
+<span aria-hidden="true" class="dot"></span> Keskimääräinen vastausaika: 2–4 h
     </div>
-
-    <div class="cta-footnote">
-      <span class="dot" aria-hidden="true"></span> Keskimääräinen vastausaika: 2–4 h
-    </div>
-  </div>
+</div>
 </section>
 </main>
 <footer class="site-footer" id="yhteys">
-  <div class="footer-bg"></div>
-  <div class="container footer-content">
-    <div class="footer-brand">
-      <img src="kuvat/logo_lapinikkuna.webp" alt="Lapin Ikkuna" class="footer-logo">
-      <p class="tagline">Kirkkaasti paras ikkunanpesu Lapissa</p>
-    </div>
-    <div id="yhteystiedot" class="footer-contact">
-  <h3>Yhteystiedot</h3>
-  <a href="tel:+358401234567">
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#2c7be5" stroke-width="2" aria-hidden="true" focusable="false" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.35a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.75.24 1.54.42 2.35.54A2 2 0 0 1 22 16.92z"/>
-    </svg>
+<div class="footer-bg"></div>
+<div class="container footer-content">
+<div class="footer-brand">
+<img alt="Lapin Ikkuna" class="footer-logo" src="kuvat/logo_lapinikkuna.webp"/>
+<p class="tagline">Kirkkaasti paras ikkunanpesu Lapissa</p>
+</div>
+<div class="footer-contact" id="yhteystiedot">
+<h3>Yhteystiedot</h3>
+<a href="tel:+358401234567">
+<svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="#2c7be5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.35a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.75.24 1.54.42 2.35.54A2 2 0 0 1 22 16.92z"></path>
+</svg>
     040 123 4567
   </a>
-  <a href="mailto:info@lapinikkuna.fi">
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#4caf50" stroke-width="2" aria-hidden="true" focusable="false" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4 4h16v16H4z" stroke="none"/>
-      <polyline points="4 4 12 13 20 4"/>
-    </svg>
+<a href="mailto:info@lapinikkuna.fi">
+<svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="#4caf50" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 4h16v16H4z" stroke="none"></path>
+<polyline points="4 4 12 13 20 4"></polyline>
+</svg>
     info@lapinikkuna.fi
   </a>
-  <p>
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#f5b301" stroke-width="2" aria-hidden="true" focusable="false" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1 1 18 0z"/>
-      <circle cx="12" cy="10" r="3"/>
-    </svg>
+<p>
+<svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="#f5b301" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1 1 18 0z"></path>
+<circle cx="12" cy="10" r="3"></circle>
+</svg>
     Rovaniemi, Lappi
   </p>
 </div>
-
-     <div class="footer-links">
-      <h3>Linkit</h3>
-      <a href="#palvelut">Palvelut</a>
-      <a href="#miksi-me">Miksi me?</a>
-      <a href="#yhteystiedot">Yhteystiedot</a>
-    </div>
-  </div>
-  <div class="footer-gloss"></div>
+<div class="footer-links">
+<h3>Linkit</h3>
+<a href="#palvelut">Palvelut</a>
+<a href="#miksi-me">Miksi me?</a>
+<a href="#yhteystiedot">Yhteystiedot</a>
+</div>
+</div>
+<div class="footer-gloss"></div>
 </footer>
-
 <script src="script.js"></script>
 <script>
 (() => {
@@ -290,104 +264,89 @@
 <script>
   lucide.createIcons();
 </script>
+<!-- Quote Modal -->
+<div aria-hidden="true" class="th-modal" id="quote-modal">
+<div class="th-modal__overlay" data-close=""></div>
+<div aria-labelledby="quote-title" aria-modal="true" class="th-modal__dialog" role="dialog">
+<button aria-label="Sulje modaali" class="th-modal__close" data-close="" type="button">
+<svg fill="none" height="22" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+<line x1="18" x2="6" y1="6" y2="18"></line>
+<line x1="6" x2="18" y1="6" y2="18"></line>
+</svg>
+</button>
+<div class="th-modal__head">
+<h3 class="th-modal__title" id="quote-title">Pyydä tarjous</h3>
+<p class="th-modal__lead">Täytä kentät – palaamme yleensä saman päivän aikana.</p>
+</div>
+<form class="th-modal__form" id="quote-form" name="quote" method="POST" data-netlify="true" action="/">
+  <input type="hidden" name="form-name" value="quote">
 
-
-  <!-- Quote Modal -->
-  <div id="quote-modal" class="th-modal" aria-hidden="true">
-    <div class="th-modal__overlay" data-close></div>
-    <div class="th-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="quote-title">
-      <button class="th-modal__close" type="button" aria-label="Sulje modaali" data-close>
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-
-      <div class="th-modal__head">
-        <h3 id="quote-title" class="th-modal__title">Pyydä tarjous</h3>
-        <p class="th-modal__lead">Täytä kentät – palaamme yleensä saman päivän aikana.</p>
-      </div>
-
-      <form class="th-modal__form" id="quote-form" name="quote" method="POST" data-netlify="true" netlify novalidate>
-        <input type="hidden" name="form-name" value="quote">
-        <div class="th-field two-col">
-          <div class="th-input">
-            <label for="q-name">Nimi</label>
-            <input id="q-name" name="name" type="text" autocomplete="name" placeholder="Etunimi Sukunimi" required>
-            <span class="th-input__error" aria-live="polite"></span>
-          </div>
-          <div class="th-input">
-            <label for="q-email">Sähköposti</label>
-            <input id="q-email" name="email" type="email" autocomplete="email" placeholder="nimi@yritys.fi" required>
-            <span class="th-input__error" aria-live="polite"></span>
-          </div>
-        </div>
-
-        <div class="th-field two-col">
-          <div class="th-input">
-            <label for="q-phone">Puhelin (valinnainen)</label>
-            <input id="q-phone" name="phone" type="tel" autocomplete="tel" placeholder="040 123 4567">
-          </div>
-          <div class="th-input">
-            <label for="q-service">Palvelu</label>
-            <select id="q-service" name="service">
-              <option value="Koti">Koti – ikkunanpesu</option>
-              <option value="Yritys">Yritys – toimitilat</option>
-              <option value="Sisä-ulkopesu">Sisä- ja ulkopesu</option>
-              <option value="Muu">Muu / en tiedä</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="th-input">
-          <label for="q-message">Kuvaus / toiveet</label>
-          <textarea id="q-message" name="message" rows="5" placeholder="Kerro lyhyesti kohteesta, ikkunoiden määrästä ja toivotusta aikataulusta."></textarea>
-        </div>
-
-        <label class="th-check">
-          <input type="checkbox" id="q-consent" name="consent" required>
-          <span>Hyväksyn, että tietoni käsitellään yhteydenottoa varten.</span>
-        </label>
-
-        <div class="th-modal__actions">
-          <button class="cta" type="submit">Lähetä pyyntö</button>
-          <button class="cta-2" type="button" data-close>Peruuta</button>
-        </div>
-
-        <p class="th-modal__foot">Keskimääräinen vastausaika: 2–4 h</p>
-      </form>
-      <p class="th-modal__thanks" role="status" hidden>Kiitos viestistäsi! Otamme pian yhteyttä.</p>
+  <div class="th-field two-col">
+    <div class="th-input">
+      <label for="q-name">Nimi</label>
+      <input id="q-name" name="name" type="text" autocomplete="name" placeholder="Etunimi Sukunimi" required>
+      <span class="th-input__error" aria-live="polite"></span>
+    </div>
+    <div class="th-input">
+      <label for="q-email">Sähköposti</label>
+      <input id="q-email" name="email" type="email" autocomplete="email" placeholder="nimi@yritys.fi" required>
+      <span class="th-input__error" aria-live="polite"></span>
     </div>
   </div>
 
-  <!-- Hidden form for Netlify build bots to register fields -->
-  <form name="quote" method="POST" data-netlify="true" netlify hidden>
-    <input type="hidden" name="form-name" value="quote">
-    <input type="text" name="name">
-    <input type="email" name="email">
-    <input type="tel" name="phone">
-    <select name="service">
-      <option value="Koti">Koti – ikkunanpesu</option>
-      <option value="Yritys">Yritys – toimitilat</option>
-      <option value="Sisä-ulkopesu">Sisä- ja ulkopesu</option>
-      <option value="Muu">Muu / en tiedä</option>
-    </select>
-    <textarea name="message"></textarea>
-    <input type="checkbox" name="consent">
-  </form>
+  <div class="th-field two-col">
+    <div class="th-input">
+      <label for="q-phone">Puhelin (valinnainen)</label>
+      <input id="q-phone" name="phone" type="tel" autocomplete="tel" placeholder="040 123 4567">
+    </div>
+    <div class="th-input">
+      <label for="q-service">Palvelu</label>
+      <select id="q-service" name="service">
+        <option value="Koti">Koti – ikkunanpesu</option>
+        <option value="Yritys">Yritys – toimitilat</option>
+        <option value="Sisä-ulkopesu">Sisä- ja ulkopesu</option>
+        <option value="Muu">Muu / en tiedä</option>
+      </select>
+    </div>
+  </div>
 
-  <form name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
-  <input type="hidden" name="form-name" value="quote">
-  <input type="text" name="name">
-  <input type="email" name="email">
-  <input type="tel" name="phone">
-  <textarea name="message"></textarea>
-  <input type="checkbox" name="consent">
+  <div class="th-input">
+    <label for="q-message">Kuvaus / toiveet</label>
+    <textarea id="q-message" name="message" rows="5" placeholder="Kerro lyhyesti kohteesta, ikkunoiden määrästä ja toivotusta aikataulusta."></textarea>
+  </div>
+
+  <label class="th-check">
+    <input type="checkbox" id="q-consent" name="consent" required>
+    <span>Hyväksyn, että tietoni käsitellään yhteydenottoa varten.</span>
+  </label>
+
+  <div class="th-modal__actions">
+    <button class="cta" type="submit">Lähetä pyyntö</button>
+    <button class="cta-2" type="button" data-close>Peruuta</button>
+  </div>
+
+  <p class="th-modal__foot">Keskimääräinen vastausaika: 2–4 h</p>
 </form>
-<form name="quote" method="POST" data-netlify="true" hidden>
-  <input type="hidden" name="form-name" value="quote">
-  <input name="name"><input type="email" name="email">
+
+<p class="th-modal__thanks" hidden="" role="status">Kiitos viestistäsi! Otamme pian yhteyttä.</p>
+</div>
+</div>
+<!-- Hidden form for Netlify build bots to register fields -->
+<form data-netlify="true" hidden="" method="POST" name="quote" netlify="">
+<input name="form-name" type="hidden" value="quote"/>
+<input name="name" type="text"/>
+<input name="email" type="email"/>
+<input name="phone" type="tel"/>
+<select name="service">
+<option value="Koti">Koti – ikkunanpesu</option>
+<option value="Yritys">Yritys – toimitilat</option>
+<option value="Sisä-ulkopesu">Sisä- ja ulkopesu</option>
+<option value="Muu">Muu / en tiedä</option>
+</select>
+<textarea name="message"></textarea>
+<input name="consent" type="checkbox"/>
 </form>
+
 
 </body>
 </html>
