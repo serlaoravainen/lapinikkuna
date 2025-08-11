@@ -372,7 +372,7 @@ if (burger && mobileMenu) {
     }
 
     if (!name.value.trim()) setError(name, 'Nimi vaaditaan'); else clearError(name);
-    const emailOk = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email.value);
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
     if (!emailOk) setError(email, 'Syötä validi sähköposti'); else clearError(email);
     if (!consent.checked) { valid = false; consent.focus(); }
 
@@ -382,7 +382,13 @@ if (burger && mobileMenu) {
       submitBtn.disabled = true;
       submitBtn.textContent = 'Lähetetään…';
 
-      setTimeout(() => {
+      const formData = new FormData(form);
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      }).then(() => {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Lähetä pyyntö';
         form.reset();
@@ -391,7 +397,10 @@ if (burger && mobileMenu) {
         setTimeout(() => {
           closeModal();
         }, 2000);
-        // Halutessasi: näytä toast tai pieni vahvistusbadge CTA:n lähellä
-      }, 700);
+      }).catch(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Lähetä pyyntö';
+        alert('Lähetys epäonnistui. Yritä myöhemmin uudelleen.');
+      });
     });
 });
