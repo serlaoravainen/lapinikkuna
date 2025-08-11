@@ -308,7 +308,8 @@
         <p class="th-modal__lead">Täytä kentät – palaamme yleensä saman päivän aikana.</p>
       </div>
 
-      <form class="th-modal__form" id="quote-form" novalidate>
+      <form class="th-modal__form" id="quote-form" name="quote" method="POST" data-netlify="true" netlify novalidate>
+        <input type="hidden" name="form-name" value="quote">
         <div class="th-field two-col">
           <div class="th-input">
             <label for="q-name">Nimi</label>
@@ -344,7 +345,7 @@
         </div>
 
         <label class="th-check">
-          <input type="checkbox" id="q-consent" required>
+          <input type="checkbox" id="q-consent" name="consent" required>
           <span>Hyväksyn, että tietoni käsitellään yhteydenottoa varten.</span>
         </label>
 
