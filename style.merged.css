@@ -1815,3 +1815,44 @@ a.card:focus-visible {
 @media (min-width: 1024px) {
   .services { padding-bottom: clamp(96px, 12vw, 160px); }
 }
+/* ===== Mobile header polish (≤520px) ===== */
+@media (max-width: 520px) {
+  .th-header {
+    background: rgba(255,255,255,0.82);                 /* selkeämpi kontrasti */
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    border-bottom: 1px solid rgba(15,23,42,0.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,.10);
+    padding-top: max(8px, env(safe-area-inset-top));     /* notch */
+    margin-bottom: 64px;                                  /* LISÄÄ VÄLIÄ heroan */
+  }
+  .th-header::before { display: none; }                   /* animaatio pois mobiilissa */
+  .th-header__inner { padding: 10px 16px; }               /* napakampi headerin korkeus */
+  .th-brand__mark   { width: 40px; height: 40px; }        /* ikonimerkki hieman pienemmäksi */
+  .th-burger { width: 44px; height: 44px; top: 14px; right: 14px;
+               box-shadow: 0 0 0 6px rgba(44,123,229,0.06); }
+}
+/* ===== Smooth scroll + a11y ===== */
+html { scroll-behavior: smooth; }
+
+/* Kunnioita reduced motion -asetusta */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Ankkurien offset, ettei sticky-header peitä otsikkoja */
+section[id],
+[id^="section-"],
+[data-scroll-target] {
+  scroll-margin-top: clamp(80px, 12vh, 120px);
+}
+/* Footer contact */
+/* Footer ikonit – pakota koko ja väri */
+.site-footer .i { width: 1em !important; height: 1em !important; vertical-align: -0.125em; }
+.site-footer .i-20 { width: 20px !important; height: 20px !important; }
+.site-footer .footer-contact svg { stroke: currentColor !important; fill: none !important; }
+
+/* Siistit rivit */
+.site-footer .contact-list{ list-style:none; padding:0; margin:8px 0 0; display:grid; gap:10px; }
+.site-footer .contact-link,.site-footer .contact-row{ display:inline-flex; align-items:center; gap:12px; text-decoration:none; color:rgba(14,16,18,.92); }
+.site-footer .contact-link:hover{ text-decoration:underline; }
