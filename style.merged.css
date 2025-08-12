@@ -1,3 +1,80 @@
+/* ============================================================================
+   style.merged.css
+   - Single file version for production (no @import).
+   - Variables from var-fixed-purge.css are inlined first, followed by all styles.
+   - Visual output remains identical.
+   ============================================================================ */
+
+/* ===== TOKENS (inlined from var-fixed-purge.css) ===== */
+:root {
+  /* Colors */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-primary: #2C7BE5;
+  --color-accent: #ffe564;
+
+
+  --primary-rgb: 44,123,229;   /* var(--color-primary) */
+  --accent-rgb: 255,179,71;    /* var(--color-accent) */
+
+
+  /* Typography */
+  --font-family: 'Inter', sans-serif;
+  --font-size-nav: 16px;
+  --line-height-nav: 24px;
+  --font-size-cta: 16px;
+  --line-height-cta: 16px;
+  --font-weight-normal: 500;
+  --font-weight-hero: bold;
+  --font-size-hero: 64px;
+  --line-height-hero: 70.4px;
+  --letter-spacing-hero: -0.01em;
+  --font-size-body-large: 20px;
+  --line-height-body-large: 30px;
+  --font-size-h1: 40px;
+  --line-height-h1: 48px;
+  --letter-spacing-h1: -0.05em;
+  --font-size-h2: 28px;
+  --line-height-h2: 36.4px;
+
+  /* Grid / Layout */
+  --grid-columns: 12;
+  --side-margin: 6.67vw; /* 96px / 1440px */
+  --gutter: 1.67vw;      /* 24px / 1440px */
+
+  --nav-gap: 2.22vw;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --font-size-hero: 48px;
+    --line-height-hero: 56px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-hero: 36px;
+    --line-height-hero: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-hero: 30px;
+    --line-height-hero: 38px;
+  }
+}
+
+@media (max-width: 320px) {
+  :root {
+    --font-size-hero: 26px;
+    --line-height-hero: 32px;
+  }
+}
+
+
+/* ===== STYLES (from style-fixed-purge.css) ===== */
 /* Reset */
 * {
   margin: 0;
@@ -117,10 +194,9 @@ a.cta:hover {
   background-color: rgba(44, 123, 229, 0.9);
 }
 /* Pastellivihreä toissijainen nappi */
-button.cta-2,
 a.cta-2 {
-  background: linear-gradient(135deg, #D4F8D4 0%, #A3E6A3 100%);
-  color: #0f3d0f;
+  background: var(--color-accent);
+  color: #0e0f12;
   border: none;
   padding: 14px 24px;
   border-radius: 12px;
@@ -129,23 +205,19 @@ a.cta-2 {
   line-height: var(--line-height-cta);
   font-weight: var(--font-weight-normal);
   text-decoration: none;
-  box-shadow:
-    0 8px 20px rgba(163, 230, 163, 0.35),
-    inset 0 1px rgba(255,255,255,0.4);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.10), inset 0 1px rgba(255,255,255,0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
   min-height: 44px;
 }
-
-button.cta-2:hover,
 a.cta-2:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow:
-    0 0 12px rgba(255,255,255,0.4),
-    0 14px 28px rgba(163, 230, 163, 0.45);
+  filter: brightness(0.98);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.12);
 }
 
+
 header img {
-  max-height: 84px; /* pysyy headerin sisällä */
+  max-height: 76px; /* pysyy headerin sisällä */
   height: auto;
   width: auto; /* pitää mittasuhteet */
   display: block; /* poistaa ylimääräisen rivivälin */
@@ -173,13 +245,7 @@ header img {
   );
   z-index: 1; /* overlay kuvan yläpuolelle */
 }
-.hero-image::before {
-  content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,.14) 40%);
-  z-index: 1;
-  pointer-events: none;
-}
+
 .hero-image { position: relative; }
 .hero-image img { position: relative; z-index: 0; }
 
@@ -191,6 +257,7 @@ header img {
   width: 100%;
   position: relative;
   z-index: 2;
+  gap: clamp(48px, 6vw, 64px);
 }
 
 /* Teksti vie esim. 7/12 columneista, kuva 5/12 */
@@ -200,18 +267,23 @@ header img {
 }
 
 .hero-image {
-  flex: 0 0 calc((5 / 12) * 100%);
+  flex: 0 0 auto;
+  width: clamp(320px, 38vw, 520px);
 }
+
+
 
 .hero-image img {
   width: 100%;
   height: auto;
-  display: block;
-  border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-  position: relative;
-  transition: transform 0.4s ease;
+  aspect-ratio: 3 / 4;                 /* ehkäisee layout-heilahtelua */
+  max-height: min(72vh, 720px);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.12);
+  transition: transform .4s ease;
+  object-position: 58% 35%;            /* fokus paremmaksi */
 }
+
 .hero-image img:hover {
   transform: scale(1.03);
 }
@@ -219,6 +291,9 @@ header img {
   font-size: var(--font-size-hero);
   line-height: var(--line-height-hero);
   padding-bottom: 22px;
+  text-wrap: balance;
+max-width: 26ch;
+
 }
 
 .hero .container p {
@@ -237,13 +312,12 @@ header img {
   .hero .container {
     flex-direction: column;
     text-align: center;
+    gap: clamp(16px, 4vw, 32px);   /* väliä tekstin ja kuvan väliin */
   }
-  .hero-text,
+  .hero-text, .hero-image { flex: 1 1 100%; }
   .hero-image {
-    flex: 1 1 100%;
-  }
-  .hero-image {
-    margin-top: 2rem;
+    width: min(88vw, 380px);
+    margin: 2rem auto 0;          /* keskitys */
   }
 }
 .services {
@@ -442,146 +516,22 @@ header img {
 /* Korttien alkutila */
 /* Overshoot-efekti */
 .before-after {
-  padding: 80px 0;
+  padding-inline: clamp(16px, 5vw, 64px);
   text-align: center;
 }
 
-.ba-wrapper {
-  position: relative;
-  max-width: 1000px;
-  margin: 0 auto;
-  aspect-ratio: 16/9;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+/* Video täyttää saman kehyksen kuin slider teki */
+.ba-wrapper { position: relative; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+width: clamp(280px, 70vw, 860px);
+margin: clamp(12px, 3vw, 40px) auto; }
+
+
+.ba-video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ba-embed { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+@media (max-width: 768px) {
+  .ba-wrapper { width: 90%; max-width: 100%; }
 }
 
-.ba-image {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-}
-
-.ba-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.ba-before { z-index: 1; }
-
-.ba-after {
-  z-index: 2;
-  overflow: hidden;
-  width: 50%;
-  transition: width 0.05s linear;
-}
-
-/* Glow */
-.ba-glow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 3;
-  --x: 50%;
-  background: radial-gradient(24rem 10rem at var(--x) 50%,
-      rgba(255,255,255,0.25) 0%,
-      rgba(255,255,255,0.1) 30%,
-      rgba(255,255,255,0) 60%);
-  mix-blend-mode: screen;
-  filter: blur(10px);
-}
-
-/* Labels */
-.ba-tag {
-  position: absolute;
-  top: 12px;
-  padding: 6px 12px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(6px);
-  z-index: 4;
-}
-
-.ba-tag.before { left: 12px; }
-.ba-tag.after  { right: 12px; }
-
-/* Handle */
-.ba-handle {
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 36px;
-  cursor: ew-resize;
-  z-index: 5;
-}
-
-.ba-line {
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 3px;
-  background: linear-gradient(180deg, #007cf0, #00dfd8);
-}
-
-.ba-circle {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #007cf0, #00dfd8);
-  border: 3px solid #fff;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-}
-
-.ba-circle::after {
-  content: attr(data-pct) "%";
-  position: absolute;
-  top: -40px; left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.75rem;
-  font-weight: 700;
-  background: rgba(255,255,255,0.9);
-  padding: 4px 8px;
-  border-radius: 6px;
-  white-space: nowrap;
-}
-
-.window-frame {
-  position: relative;
-  width: 90%;
-  max-width: 1000px;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  perspective: 1000px;
-}
-
-.window-scene {
-  position: absolute;
-  inset: 0;
-  background: url('kuvat/scene.webp') center/cover no-repeat;
-  transform: translateZ(-50px) scale(1.2);
-  transition: transform 0.1s ease-out;
-  z-index: 1;
-}
-
-.window-reflection {
-  position: absolute;
-  inset: 0;
-  background: url('kuvat/reflection.webp') center/cover no-repeat;
-  opacity: 0.2;
-  mix-blend-mode: screen;
-  transform: translateZ(0);
-  transition: transform 0.1s ease-out;
-  z-index: 2;
-}
 .why-us {
   position: relative;
   padding: 100px 0;
@@ -1066,12 +1016,13 @@ a.cta-2.cta-big {
   opacity: 1;
 }
 
-.footer-contact h4, .footer-links h4 {
+.footer-contact h3, .footer-links h3 {
   margin-bottom: 10px;
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  color: rgba(14, 16, 18, 0.98);
+  text-shadow: none;
 }
+
 
 /* Saapumis-animaatio scrollissa */
 .site-footer .footer-content > div {
@@ -1101,8 +1052,8 @@ a.cta-2.cta-big {
 .footer-contact a:hover {
   text-decoration: underline;
 }
-.footer-contact h4,
-.footer-links h4,
+.footer-contact h3,
+.footer-links h3,
 .footer-brand .tagline,
 .footer-contact p,
 .footer-contact a,
@@ -1687,3 +1638,180 @@ body.no-scroll { overflow: hidden; }
 
 .th-modal__actions { display: flex; gap: 10px; justify-content: flex-start; margin-top: 4px; }
 .th-modal__foot { margin-top: 6px; font-size: .92rem; color: rgba(14,15,18,0.7); }
+/* ===== Mobile hero (≤480px) — liimaa tiedoston LOPPUUN ===== */
+@media (max-width: 480px) {
+
+  /* Rakenne ja hengitys */
+  .hero .container {
+    flex-direction: column;       /* varmistetaan pino */
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    padding-inline: 20px;         /* sisämarginaali kapeille näytöille */
+  }
+
+  /* Otsikon rivinpituus kahdelle–kolmelle riville */
+  .hero .container h1 {
+    text-wrap: balance;
+    max-width: 16ch;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+
+  /* Lead-teksti kapeammaksi ja keskelle */
+  .hero .container p {
+    max-width: 34ch;
+    margin-inline: auto;
+    opacity: .9;
+    line-height: 1.5;
+  }
+
+  /* Napeista peukalo-ystävälliset: koko leveys ja pino */
+  .hero .buttons {
+    width: 100%;
+    max-width: 360px;
+    margin: 12px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .hero .buttons a {
+    width: 100%;
+    min-height: 48px;
+    text-align: center;
+    display: block;
+  }
+
+  /* Kuvakortti: leveämpi mobiilissa, kevyempi varjo, parempi fokus */
+  .hero-image {
+    width: min(92vw, 560px);
+    margin-top: 16px;
+  }
+  .hero-image img {
+    aspect-ratio: 4 / 5;          /* pystympi leikkaus mobiiliin */
+    max-height: 56vh;
+    border-radius: 14px;
+    box-shadow: 0 14px 34px rgba(0,0,0,.12);
+    object-position: 56% 32%;
+  }
+
+  /* Turvallinen tappialue ja notch-fixi */
+  .th-burger { width: 44px; height: 44px; }
+  header { padding-top: max(8px, env(safe-area-inset-top)); }
+}
+/* ===== Tablet hero (600–1024px) — lisää TÄMÄ LOPPUUN ===== */
+/* ===== Tablet hero (600–1024px) — KORVAA koko aiempi lohko tällä ===== */
+@media (min-width: 600px) and (max-width: 1024px) {
+
+  /* Sommittelu: pino keskelle + vähän lisää hengitystä */
+  .hero .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    padding-inline: clamp(24px, 6vw, 48px);
+    padding-top: clamp(12px, 4vh, 20px);
+  }
+
+  /* Otsikko: hieman pidempi rivinpituus tabletilla */
+  .hero .container h1 {
+    text-wrap: balance;
+    max-width: 22ch;       /* 2–3 riviä 768–1024 leveydellä */
+    margin-bottom: 10px;
+  }
+
+  /* Lead-teksti luettavaksi 1–2 riville */
+  .hero .container p {
+    max-width: 46ch;
+    margin-inline: auto;
+    line-height: 1.55;
+    opacity: .9;
+  }
+
+  /* CTA-napit: isompi tappialue, eivät kutistu */
+  .hero .buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;       /* jos tila loppuu, rivittyy kauniisti */
+    gap: 16px;
+    width: 100%;
+  }
+  .hero .buttons a {
+    min-height: 52px;
+    padding: 14px 24px;
+    font-size: 1rem;       /* varmistaa hyvän koon tabletilla */
+    text-align: center;
+  }
+
+  /* Kuvakortti: isompi tabletilla */
+  .hero-image {
+    width: min(90vw, 720px);
+    margin-top: 16px;
+  }
+  .hero-image img {
+    aspect-ratio: 4 / 3;   /* vähän vaakasuuntaisempi tabletissa */
+    max-height: 60vh;
+    border-radius: 16px;
+    box-shadow: 0 18px 44px rgba(0,0,0,.12);
+    object-position: 56% 34%;
+  }
+
+  /* Header: aavistuksen pienempi kuin desktopissa */
+  header img {
+    max-height: 72px;
+  }
+}
+/* ===== Services: viimeistely ja a11y 100/100 ===== */
+
+/* Grid venyttää kortit yhtä korkeiksi */
+.services .cards { align-items: stretch; }
+
+/* Koko kortti linkki: värit ja kursori oikein */
+a.card {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  height: 100%;
+}
+
+/* Pill-otsikot yhtenäisiksi tabletista ylöspäin */
+@media (min-width: 600px) {
+  .card .gradient-title {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;                  /* sama leveys kaikkiin kolmeen */
+    padding: 10px 20px;                /* pieni tiivistys pitkälle tekstille */
+    text-align: center;
+  }
+}
+
+/* Ikonille pieni liike – kevyt, mutta tuntuva */
+.card img { transition: transform .35s ease; }
+.card:hover img { transform: translateY(-2px) scale(1.03); }
+
+/* Hover + focus: selkeä noste ja näppäimistöystävällinen korostus */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(0,0,0,.12);
+}
+a.card:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(44,123,229,.85) inset,       /* sisäinen korostus */
+    0 16px 36px rgba(0,0,0,.12);                /* sama noste kuin hoverissa */
+  transform: translateY(-6px);
+}
+
+/* Tekstin luettavuus hitusen väljemmäksi ja tasaiseksi */
+.services .card p {
+  max-width: 28ch;
+  line-height: 1.55;
+  margin-top: 6px;
+}
+
+/* Rytmi: ala-tyhjää hieman lisää isoilla näytöillä */
+@media (min-width: 1024px) {
+  .services { padding-bottom: clamp(96px, 12vw, 160px); }
+}

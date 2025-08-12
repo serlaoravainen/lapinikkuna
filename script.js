@@ -2,11 +2,25 @@
 document.documentElement.classList.remove('no-js');
 
 // Taustablobien kevyt parallax
+// Taustablobien kevyt parallax – rAF-throttle + passive scroll
 const root = document.documentElement;
+
+let ticking = false;
+function updateBgShift() {
+  root.style.setProperty('--bg-shift', (window.scrollY * 0.02) + 'px');
+  ticking = false;
+}
+
 window.addEventListener('scroll', () => {
-  const y = window.scrollY * 0.02;
-  root.style.setProperty('--bg-shift', y + 'px');
-});
+  if (!ticking) {
+    requestAnimationFrame(updateBgShift);
+    ticking = true;
+  }
+}, { passive: true });
+
+// Aseta arvo heti myös latauksessa ja koon muuttuessa
+updateBgShift();
+window.addEventListener('resize', updateBgShift, { passive: true });
 
 // Korttien reveal + rivikohtainen stagger
 const cardsWrap = document.querySelector('.services .cards');
