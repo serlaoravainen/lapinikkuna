@@ -1575,6 +1575,8 @@ body.no-scroll { overflow: hidden; }
   border-radius: 22px;
   box-shadow: 0 40px 80px rgba(0,0,0,0.18), inset 0 1px rgba(255,255,255,0.6);
   padding: clamp(22px, 4vw, 36px);
+  /* Extra bottom padding to stay above mobile browser bars */
+  padding-bottom: calc(clamp(22px, 4vw, 36px) + env(safe-area-inset-bottom));
   transform-origin: 50% 44%;
   opacity: 0; animation: modalIn 260ms cubic-bezier(.16,.84,.44,1) forwards 60ms;
 }
